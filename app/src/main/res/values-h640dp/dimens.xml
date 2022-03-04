@@ -1,0 +1,92 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--	h720dp*.9  sp*1.0-->
+
+    <!--region common dimen-->
+    <dimen name="dimen_1">0.9dp</dimen>
+    <dimen name="dimen_2">1.8dp</dimen>
+    <dimen name="dimen_3">2.7dp</dimen>
+    <dimen name="dimen_4">3.6dp</dimen>
+    <dimen name="dimen_5">4.5dp</dimen>
+    <dimen name="dimen_6">5.4dp</dimen>
+    <dimen name="dimen_8">7.2dp</dimen>
+    <dimen name="dimen_10">9dp</dimen>
+    <dimen name="dimen_12">10.8dp</dimen>
+    <dimen name="dimen_14">12.6dp</dimen>
+    <dimen name="dimen_15">13.5dp</dimen>
+    <dimen name="dimen_16">14.4dp</dimen>
+    <dimen name="dimen_18">16.2dp</dimen>
+    <dimen name="dimen_19">17.1dp</dimen>
+    <dimen name="dimen_20">18dp</dimen>
+    <dimen name="dimen_21">18.9dp</dimen>
+    <dimen name="dimen_24">21.6dp</dimen>
+    <dimen name="dimen_26">23.4dp</dimen>
+    <dimen name="dimen_28">25.2dp</dimen>
+    <dimen name="dimen_30">27dp</dimen>
+    <dimen name="dimen_32">28.8dp</dimen>
+    <dimen name="dimen_34">30.6dp</dimen>
+    <dimen name="dimen_35">31.5dp</dimen>
+    <dimen name="dimen_36">32.4dp</dimen>
+    <dimen name="dimen_37">33.3dp</dimen>
+    <dimen name="dimen_44">39.6dp</dimen>
+    <dimen name="dimen_45">40.5dp</dimen>
+    <dimen name="dimen_40">36dp</dimen>
+    <dimen name="dimen_46">41.4dp</dimen>
+    <dimen name="dimen_48">43.2dp</dimen>
+    <dimen name="dimen_50">45dp</dimen>
+    <dimen name="dimen_56">50.4dp</dimen>
+    <dimen name="dimen_60dp">54dp</dimen>
+    <dimen name="dimen_64">57.6dp</dimen>
+    <dimen name="dimen_65">58.5dp</dimen>
+    <dimen name="dimen_70">63dp</dimen>
+    <dimen name="dimen_80">72dp</dimen>
+    <dimen name="dimen_90">81dp</dimen>
+    <dimen name="dimen_96">86.4dp</dimen>
+    <dimen name="dimen_100">90dp</dimen>
+    <dimen name="dimen_110">99dp</dimen>
+    <dimen name="dimen_120">108dp</dimen>
+    <dimen name="dimen_129">116.1dp</dimen>
+    <dimen name="dimen_135">121.5dp</dimen>
+    <dimen name="dimen_144">129.6dp</dimen>
+    <dimen name="dimen_150">135dp</dimen>
+    <dimen name="dimen_160">144dp</dimen>
+    <dimen name="dimen_175">157.5dp</dimen>
+    <dimen name="dimen_176">158.4dp</dimen>
+    <dimen name="dimen_185">166.5dp</dimen>
+    <dimen name="dimen_200">180dp</dimen>
+    <dimen name="dimen_210">189dp</dimen>
+    <dimen name="dimen_230">207dp</dimen>
+    <dimen name="dimen_235">211.5dp</dimen>
+    <dimen name="dimen_240">216dp</dimen>
+    <dimen name="dimen_250">225dp</dimen>
+    <dimen name="dimen_280">252dp</dimen>
+    <dimen name="dimen_295">265.5dp</dimen>
+    <dimen name="dimen_300">270dp</dimen>
+    <dimen name="dimen_320">288dp</dimen>
+    <dimen name="dimen_350">315dp</dimen>
+    <!-- endregion-->
+
+	<!--region text size-->
+	<dimen name="text_size_4">4sp</dimen>
+	<dimen name="text_size_8">8sp</dimen>
+	<dimen name="text_size_10">10sp</dimen>
+	<dimen name="text_size_11">11sp</dimen>
+	<dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_13">13sp</dimen>
+	<dimen name="text_size_14">14sp</dimen>
+	<dimen name="text_size_15">15sp</dimen>
+	<dimen name="text_size_16">16sp</dimen>
+	<dimen name="text_size_17">17sp</dimen>
+	<dimen name="text_size_18">18sp</dimen>
+	<dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_22">22sp</dimen>
+	<dimen name="text_size_24">24sp</dimen>
+	<dimen name="text_size_28">28sp</dimen>
+	<dimen name="text_size_30">30sp</dimen>
+    <dimen name="text_size_36">36sp</dimen>
+    <dimen name="text_size_40">40sp</dimen>
+    <dimen name="text_size_45">45sp</dimen>
+	<dimen name="text_size_48">48sp</dimen>
+    <dimen name="text_size_92">92sp</dimen>
+	<!-- endregion-->
+
+</resources>
