@@ -18,6 +18,18 @@
                motion:keyPositionType="parentRelative"
                motion:percentX=".5"
                motion:framePosition="90"/>
+           <KeyAttribute
+               motion:motionTarget="@+id/searchTextInputContainer"
+               motion:framePosition="0"
+               android:alpha="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/searchTextInputContainer"
+               motion:framePosition="90"
+               android:alpha="0" />
+           <KeyAttribute
+               motion:motionTarget="@+id/searchTextInputContainer"
+               motion:framePosition="100"
+               android:alpha="1" />
        </KeyFrameSet>
     </Transition>
 
@@ -36,11 +48,21 @@
             android:id="@+id/searchButton"
             android:layout_width="@dimen/dimen_100"
             android:layout_height="@dimen/dimen_100"
+            android:elevation="@dimen/dimen_10"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="@id/dividerGuideline"
             motion:layout_constraintBottom_toBottomOf="@id/dividerGuideline"/>
 
+        <Constraint
+            android:id="@+id/searchTextInputContainer"
+            android:layout_width="@dimen/dimen_100"
+            android:layout_height="@dimen/dimen_100"
+            android:alpha="0"
+            motion:layout_constraintStart_toStartOf="@id/searchButton"
+            motion:layout_constraintBottom_toBottomOf="@id/searchButton"
+            motion:layout_constraintEnd_toEndOf="@id/searchButton"
+            motion:layout_constraintTop_toTopOf="@id/searchButton"/>
 
         <Constraint
             android:id="@+id/dividerGuideline"
@@ -62,14 +84,25 @@
             android:alpha="1"/>
         <Constraint
             android:id="@+id/searchButton"
-            android:layout_width="@dimen/dimen_50"
-            android:layout_height="@dimen/dimen_50"
-            motion:pivotAnchor="parent"
-            android:layout_marginTop="@dimen/dimen_10"
+            android:layout_width="@dimen/dimen_70"
+            android:layout_height="@dimen/dimen_70"
             android:layout_marginEnd="@dimen/dimen_10"
+            android:elevation="@dimen/dimen_10"
+            motion:pivotAnchor="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintTop_toTopOf="@id/dividerGuideline"
             motion:layout_constraintBottom_toBottomOf="@id/dividerGuideline"/>
+
+        <Constraint
+            android:id="@+id/searchTextInputContainer"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_70"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:alpha="1"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toBottomOf="@id/searchButton"
+            motion:layout_constraintEnd_toEndOf="@id/searchButton"
+            motion:layout_constraintTop_toTopOf="@id/searchButton"/>
         <Constraint
             android:id="@+id/dividerGuideline"
             android:layout_height="0dp"
