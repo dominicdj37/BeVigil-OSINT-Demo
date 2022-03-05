@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">@color/purple_500</color>
-    <color name="colorPrimaryVariant">@color/purple_700</color>
-    <color name="colorOnPrimary">@color/white</color>
+    <color name="colorPrimary">@color/app_blue</color>
+    <color name="colorPrimaryVariant">@color/app_blue_light</color>
+    <color name="colorOnPrimary">@color/app_yellow</color>
 
-    <color name="colorSecondary">@color/teal_200</color>
-    <color name="colorSecondaryVariant">@color/teal_700</color>
-    <color name="colorOnSecondary">@color/black</color>
+    <color name="colorSecondary">#8C73BA</color>
+    <color name="colorSecondaryVariant">#7AB9EC</color>
+    <color name="colorOnSecondary">#F8FDC1</color>
 
+    <color name="app_yellow">#F6FF9A</color>
+    <color name="app_blue_light">#2196F3</color>
+    <color name="app_blue">#673ab7</color>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>

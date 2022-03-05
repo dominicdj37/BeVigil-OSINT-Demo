@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BeVigil OSINT Demo</string>
+    <string name="home_page_title">BeVigil</string>
 </resources>
