@@ -98,17 +98,19 @@
         app:layout_constraintEnd_toEndOf="@id/searchButton"
         app:layout_constraintStart_toStartOf="@id/searchButton"
         app:layout_constraintTop_toTopOf="@id/searchButton">
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/searchInputEditText"
+            style="@style/EditTextStyle"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            style="@style/EditTextStyle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="@dimen/dimen_24"
-            android:layout_marginEnd="@dimen/dimen_50"/>
+            android:layout_marginEnd="@dimen/dimen_50"
+            android:imeOptions="actionDone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
