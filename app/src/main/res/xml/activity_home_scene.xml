@@ -97,7 +97,9 @@
             motion:layout_constraintTop_toBottomOf="@id/toolbarLayout"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"/>
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintHorizontal_bias="0.0" />
         <Constraint
             android:id="@+id/backgroundView"
             android:layout_height="0dp"

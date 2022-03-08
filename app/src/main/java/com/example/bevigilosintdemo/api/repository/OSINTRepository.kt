@@ -7,11 +7,9 @@ import com.example.bevigilosintdemo.api.core.ApiConstants
 import com.example.bevigilosintdemo.api.core.ApiConstants.ASSETS
 import com.example.bevigilosintdemo.api.core.ApiConstants.formatUrl
 import com.example.bevigilosintdemo.api.core.ApiResponse
-import com.example.bevigilosintdemo.api.model.AssetModel
 import com.google.gson.Gson
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.lang.Error
 
 class OSINTRepository private constructor() {
 
@@ -36,9 +34,7 @@ class OSINTRepository private constructor() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ responseModel ->
-                val gson = Gson()
-                val assests = responseModel
-                liveData.postValue(ApiResponse(assests))
+                liveData.postValue(ApiResponse(responseModel))
             }, { error ->
                 liveData.postValue(ApiResponse(error))
             })

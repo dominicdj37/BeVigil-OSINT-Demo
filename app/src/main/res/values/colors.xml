@@ -8,6 +8,7 @@
     <color name="colorSecondary">#8C73BA</color>
     <color name="colorSecondaryVariant">#7AB9EC</color>
     <color name="colorOnSecondary">#F8FDC1</color>
+    <color name="colorSecondary50per">#807AB9EC</color>
 
     <color name="app_yellow">#F6FF9A</color>
     <color name="app_blue_light">#2196F3</color>

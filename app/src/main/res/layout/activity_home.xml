@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_home_gradient"
     app:layoutDescription="@xml/activity_home_scene"
-    tools:context=".ui.HomeActivity">
+    tools:context=".ui.activities.HomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/statusBar"
@@ -128,19 +128,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recentContainer"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_24"
         android:layout_marginTop="@dimen/dimen_24"
         android:layout_marginEnd="@dimen/dimen_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchPromptText">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/recentLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -148,4 +148,14 @@
             android:textColor="@color/colorPrimaryVariant"
             android:textSize="@dimen/text_size_24"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/assetsRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recentContainer"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.motion.widget.MotionLayout>

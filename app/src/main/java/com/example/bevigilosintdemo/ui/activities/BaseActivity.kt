@@ -1,4 +1,4 @@
-package com.example.bevigilosintdemo.ui
+package com.example.bevigilosintdemo.ui.activities
 
 import android.content.Context
 import android.graphics.Color

@@ -3,4 +3,21 @@
     <string name="home_page_title">BeVigil</string>
     <string name="search_prompt">Search using App package name</string>
     <string name="recent_searches_label">Recent Searches</string>
+
+    <string name="asset_title_email">{count} Email</string>
+    <string name="asset_title_filename">{count} File Name</string>
+    <string name="asset_title_file_path">{count} File Path</string>
+    <string name="asset_title_host">{count} Host</string>
+    <string name="asset_title_rest_api">{count} REST API</string>
+    <string name="asset_title_url">{count} URL</string>
+    <string name="asset_title_relative_endpoint">{count} Relative Endpoint</string>
+    <string name="asset_title_ip_address_disclosure">{count} IP Address Disclosures</string>
+    <string name="asset_title_ip_url">{count} IP URL</string>
+    <string name="asset_title_amazon_elb_url">{count} Amazon ELB URL</string>
+    <string name="asset_title_aws_url">{count} AWS URL</string>
+    <string name="asset_title_cloudFront_url">{count} CloudFront URL</string>
+    <string name="asset_title_firebase_url">{count} Firebase URL</string>
+
+    <string name="view_all_label">View all {asset}</string>
+
 </resources>

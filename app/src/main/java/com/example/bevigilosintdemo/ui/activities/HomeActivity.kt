@@ -1,22 +1,23 @@
-package com.example.bevigilosintdemo.ui
+package com.example.bevigilosintdemo.ui.activities
 
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.activity.viewModels
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bevigilosintdemo.R
 import com.example.bevigilosintdemo.api.core.ApiResponse
 import com.example.bevigilosintdemo.api.model.AssetModel
 import com.example.bevigilosintdemo.applyTopWindowInsetToMargin
 import com.example.bevigilosintdemo.databinding.ActivityHomeBinding
+import com.example.bevigilosintdemo.ui.adapters.AssetsAdapter
 import com.example.bevigilosintdemo.viewmodels.HomeViewModel
 
 class HomeActivity : BaseActivity() {
 
     lateinit var binding: ActivityHomeBinding
+    var assetAdapter: AssetsAdapter? = null
     val viewModel: HomeViewModel by viewModels()
     var isSearchLayoutExpanded = false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +28,12 @@ class HomeActivity : BaseActivity() {
 
         initializeToolbar()
         initializeMotionLayout()
+        initializeAssetsList()
         initializeSearch()
+    }
+
+    private fun initializeAssetsList() {
+
     }
 
     private fun initializeMotionLayout() {
@@ -62,7 +68,6 @@ class HomeActivity : BaseActivity() {
                 binding.searchInputEditText.requestFocus()
                 openSoftKeyboard(binding.searchInputEditText)
             }
-
         }
     }
 
@@ -70,8 +75,11 @@ class HomeActivity : BaseActivity() {
         binding.searchInputEditText.text?.trim()?.takeIf { it.isNotBlank() }?.let { inputString ->
             viewModel.getAllAssets(inputString.toString()).observe(this, object : Observer<ApiResponse> {
                 override fun onChanged(t: ApiResponse?) {
-                    if(t?.isSuccess == true) {
+                    if(t?.data != null) {
                         viewModel.assetsMap[inputString.toString()] = t.data as AssetModel
+                        assetAdapter = AssetsAdapter(t.data as AssetModel)
+                        binding.assetsRecyclerView.layoutManager = LinearLayoutManager(this@HomeActivity)
+                        binding.assetsRecyclerView.adapter = assetAdapter
                     } else {
 
                     }

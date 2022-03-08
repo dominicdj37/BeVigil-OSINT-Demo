@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BeVigilOSINTDemo">
         <activity
-            android:name=".ui.HomeActivity"
+            android:name=".ui.activities.HomeActivity"
             android:theme="@style/homeTheme"
             android:exported="true">
             <intent-filter>
