@@ -1,30 +1,68 @@
 package com.example.bevigilosintdemo.ui.activities
 
-import android.content.Context
-import android.graphics.Color
-import android.graphics.Rect
+import android.content.Intent
 import android.os.Bundle
+import android.os.Message
 import android.view.View
-import android.view.ViewTreeObserver
-import android.view.WindowManager
-import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.constraintlayout.widget.Guideline
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
-import androidx.core.view.updatePadding
+import com.example.bevigilosintdemo.R
+import com.example.bevigilosintdemo.api.model.Error
+import com.example.bevigilosintdemo.databinding.LayoutLoadingProgressBinding
+import com.example.bevigilosintdemo.utils.ResourceUtils.getStringResource
+import kotlinx.coroutines.*
 
-open class BaseActivity: AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
 
-    fun openSoftKeyboard(view: View) {
-        view.requestFocus()
-        // open the soft keyboard
-        val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+    fun navigateToDeviceAppsActivity() {
+        startActivity(Intent(this, DeviceAppListActivity::class.java))
+    }
+
+    fun showLoading(binding: LayoutLoadingProgressBinding) {
+        binding.root.visibility = View.VISIBLE
+    }
+
+    fun hideLoading(binding: LayoutLoadingProgressBinding) {
+        GlobalScope.launch {
+            delay(1000)
+            withContext(Dispatchers.Main) {
+                binding.root.visibility = View.GONE
+            }
+        }
+    }
+
+    fun handleError(error: Error?) {
+        showDismissiveAlertDialog(
+            title = getStringResource(R.string.oops),
+            message = error?.message ?: getStringResource(R.string.unknown_error)
+        )
+    }
+
+    fun showDismissiveAlertDialog(
+        title: String,
+        message: String,
+        buttonText: String = getStringResource(R.string.ok),
+        onDismiss: () -> Unit? = {})
+    {
+        val mAlertDialog = AlertDialog.Builder(this).create()
+        mAlertDialog.setTitle(title)
+        mAlertDialog.setMessage(message)
+        mAlertDialog.setCancelable(false)
+        mAlertDialog.setButton(AlertDialog.BUTTON_POSITIVE, buttonText, Message())
+        mAlertDialog.setOnShowListener {
+            val positive = mAlertDialog.getButton(AlertDialog.BUTTON_POSITIVE)
+            positive?.transformationMethod = null
+
+            positive?.setOnClickListener {
+                mAlertDialog.dismiss()
+                onDismiss.invoke()
+            }
+        }
+        mAlertDialog.show()
     }
 }

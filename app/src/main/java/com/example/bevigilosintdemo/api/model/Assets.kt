@@ -14,6 +14,11 @@ class AssetModel {
     @SerializedName("assets") @Expose
     var assets: LinkedHashMap<String,ArrayList<String>> = linkedMapOf()
 
+    @SerializedName("detail") @Expose
+    var detail: String? = null
+
+    var apiCalled = false
+
     fun getKeyAt(index: Int) = assets.keys.elementAt(index)
     fun getAssetAt(index: Int) = assets.values.elementAt(index)
     fun isEmpty() = assets.isEmpty()

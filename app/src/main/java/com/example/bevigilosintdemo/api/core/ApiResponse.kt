@@ -1,8 +1,10 @@
 package com.example.bevigilosintdemo.api.core
 
+import com.example.bevigilosintdemo.R
 import com.example.bevigilosintdemo.api.model.Error
 import com.example.bevigilosintdemo.api.model.ErrorBody
 import com.example.bevigilosintdemo.api.model.HttpStatusCode
+import com.example.bevigilosintdemo.utils.ResourceUtils.getStringResource
 import com.google.gson.Gson
 import retrofit2.HttpException
 import java.lang.Exception
@@ -36,14 +38,17 @@ class ApiResponse() {
 
             is UnknownHostException -> {
                 this.error?.mCode = HttpStatusCode.notFound
+                this.error?.message = getStringResource(R.string.error_not_found)
             }
 
             is SocketTimeoutException -> {
                 this.error?.mCode = HttpStatusCode.timeout
+                this.error?.message = getStringResource(R.string.error_not_found)
             }
 
             is ConnectException -> {
                 this.error?.mCode = HttpStatusCode.noInternet
+                this.error?.message = getStringResource(R.string.error_no_network)
             }
         }
     }

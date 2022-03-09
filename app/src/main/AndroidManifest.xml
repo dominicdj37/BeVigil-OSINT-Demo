@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bevigilosintdemo">
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
     <application
         android:name=".core.AppContext"
@@ -10,15 +12,20 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BeVigilOSINTDemo">
+        android:theme="@style/Theme.BeVigilOSINTDemo"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.activities.DeviceAppListActivity"
+            android:theme="@style/myDeviceTheme"
+            android:exported="true" />
         <activity
             android:name=".ui.activities.HomeActivity"
-            android:theme="@style/homeTheme"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/homeTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

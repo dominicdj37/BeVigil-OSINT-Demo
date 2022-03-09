@@ -19,5 +19,23 @@
     <string name="asset_title_firebase_url">{count} Firebase URL</string>
 
     <string name="view_all_label">View all {asset}</string>
+    <string name="loading">Loading…</string>
+    <string name="no_recent_items_text">No Recent Searches</string>
+    <string name="recent_items_text">Your Recent Searches</string>
+    <string name="clear_recent_items_text">Clear all recent items</string>
+    <string name="ok">Ok</string>
+    <string name="error_not_found">We couldn\'t find what you are looking for! Please try again later.</string>
+    <string name="error_no_network">We couldn\'t establish a connection with oru servers. Please try again later.</string>
+    <string name="oops">Oops!</string>
+    <string name="unknown_error">We ran into a problem. Please try again.</string>
+    <string name="whoops">Whoops!</string>
+    <string name="nothing_here_text">There\'s nothing here!</string>
+    <string name="search_package_id_hint">Try searching our database for any android package ID. \n eg: com.olacabs.customer</string>
+    <string name="search_hint_title">Hi there!</string>
+    <string name="installed_apps">Installed Apps</string>
+    <string name="system_apps">System Apps</string>
+    <string name="apps_found_on_your_device">Apps found on your device</string>
+    <string name="check_now">Check your Apps</string>
+    <string name="my_apps">My Apps</string>
 
 </resources>

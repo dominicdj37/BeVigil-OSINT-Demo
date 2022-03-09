@@ -1,6 +1,7 @@
 package com.example.bevigilosintdemo.ui.activities
 
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.view.WindowCompat
@@ -10,10 +11,25 @@ import com.example.bevigilosintdemo.R
 import com.example.bevigilosintdemo.api.core.ApiResponse
 import com.example.bevigilosintdemo.api.model.AssetModel
 import com.example.bevigilosintdemo.applyTopWindowInsetToMargin
+import com.example.bevigilosintdemo.core.Constants.ASSET_TYPE_KEY
+import com.example.bevigilosintdemo.core.Constants.PACKAGE_NAME_KEY
 import com.example.bevigilosintdemo.databinding.ActivityHomeBinding
+import com.example.bevigilosintdemo.hideKeyBoardAndRemoveFocus
+import com.example.bevigilosintdemo.showKeyBoardAndFocus
+import com.example.bevigilosintdemo.ui.adapters.AssetClickListener
 import com.example.bevigilosintdemo.ui.adapters.AssetsAdapter
+import com.example.bevigilosintdemo.ui.custom.RecentLabelItem
+import com.example.bevigilosintdemo.ui.fragments.AssetDetailsBottomSheetFragment
+import com.example.bevigilosintdemo.utils.ResourceUtils.getStringResource
 import com.example.bevigilosintdemo.viewmodels.HomeViewModel
+import kotlinx.coroutines.*
+import android.content.pm.PackageManager
 
+import android.content.pm.ApplicationInfo
+import com.example.bevigilosintdemo.utils.ResourceUtils.getDrawableResource
+
+
+@DelicateCoroutinesApi
 class HomeActivity : BaseActivity() {
 
     lateinit var binding: ActivityHomeBinding
@@ -29,11 +45,64 @@ class HomeActivity : BaseActivity() {
         initializeToolbar()
         initializeMotionLayout()
         initializeAssetsList()
+        refreshRecentItems()
         initializeSearch()
+
+
+        getDeviceApps()
+    }
+
+    private fun getDeviceApps() {
+        binding.deviceAppsInfoView.setup(packageManager) {
+            navigateToDeviceAppsActivity()
+        }
+    }
+
+
+    private fun refreshRecentItems() {
+        binding.recentFlexBoxLayout.removeAllViews()
+        if(viewModel.assetsMap.isEmpty()) {
+            binding.recentFlexBoxLayout.addView(RecentLabelItem(this).setRecentItem(getStringResource(R.string.no_recent_items_text), invertColor = true))
+        } else {
+            binding.recentFlexBoxLayout.addView(RecentLabelItem(this).setRecentItem(getStringResource(R.string.recent_items_text), invertColor = true))
+            viewModel.assetsMap.keys.forEach { searchKeys ->
+                binding.recentFlexBoxLayout.addView(
+                    RecentLabelItem(this).setRecentItem(searchKeys, onClick = { recentString ->
+                        onRecentItemClicked(recentString)
+                    })
+                )
+            }
+            binding.recentFlexBoxLayout.addView(
+                RecentLabelItem(this).setRecentItem(getStringResource(R.string.clear_recent_items_text), invertColor = true, onClick = {
+                    viewModel.clearAllRecentItems()
+                    refreshRecentItems()
+                })
+            )
+        }
+    }
+
+    private fun onRecentItemClicked(recentString: String) {
+        binding.homeParent.transitionToEnd()
+        isSearchLayoutExpanded = true
+        binding.searchInputEditText.setText(recentString)
+        getAllAssetsFor(recentString)
+    }
+
+    private val assetListListener = object :AssetClickListener {
+        override fun viewMoreClicked(assetKey: String, packageID: String) {
+            val detailsBottomSheet = AssetDetailsBottomSheetFragment()
+            detailsBottomSheet.arguments = Bundle().apply {
+                putString(ASSET_TYPE_KEY, assetKey)
+                putString(PACKAGE_NAME_KEY, packageID)
+            }
+            detailsBottomSheet.show(supportFragmentManager, detailsBottomSheet.tag)
+        }
     }
 
     private fun initializeAssetsList() {
-
+        assetAdapter = AssetsAdapter(AssetModel(), assetListListener)
+        binding.assetsRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.assetsRecyclerView.adapter = assetAdapter
     }
 
     private fun initializeMotionLayout() {
@@ -43,6 +112,7 @@ class HomeActivity : BaseActivity() {
             }
             override fun onTransitionCompleted(p0: MotionLayout?, p1: Int) {
                 if(p1 == R.id.collapsedSet) {
+                    initializeAssetsList()
                     isSearchLayoutExpanded = false
                     binding.searchInputEditText.isEnabled = false
                 } else if(p1 == R.id.expandedSet) {
@@ -55,36 +125,55 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun initializeToolbar() {
+        binding.toolbarLayout.setup(getStringResource(R.string.home_page_title),
+            getDrawableResource(R.drawable.ic_nav_menu), leftClick = {
+            //todo add side menu
+        })
         binding.statusBarReference.applyTopWindowInsetToMargin()
     }
 
     private fun initializeSearch() {
         binding.searchButton.setOnClickListener {
             if (isSearchLayoutExpanded) {
-                getAllAssets()
+                binding.searchInputEditText.hideKeyBoardAndRemoveFocus()
+                binding.searchInputEditText.text?.trim()?.takeIf { it.isNotBlank() }?.let { inputString ->
+                    getAllAssetsFor(inputString.toString())
+                }
             } else {
                 binding.homeParent.transitionToEnd()
                 isSearchLayoutExpanded = true
-                binding.searchInputEditText.requestFocus()
-                openSoftKeyboard(binding.searchInputEditText)
+                binding.searchInputEditText.showKeyBoardAndFocus()
+            }
+        }
+
+        binding.searchInputEditText.setOnEditorActionListener { _, actionId, _ ->
+            return@setOnEditorActionListener when (actionId) {
+                EditorInfo.IME_ACTION_DONE -> {
+                    binding.searchButton.callOnClick()
+                    true
+                }
+                else -> true
             }
         }
     }
 
-    private fun getAllAssets() {
-        binding.searchInputEditText.text?.trim()?.takeIf { it.isNotBlank() }?.let { inputString ->
-            viewModel.getAllAssets(inputString.toString()).observe(this, object : Observer<ApiResponse> {
-                override fun onChanged(t: ApiResponse?) {
-                    if(t?.data != null) {
-                        viewModel.assetsMap[inputString.toString()] = t.data as AssetModel
-                        assetAdapter = AssetsAdapter(t.data as AssetModel)
-                        binding.assetsRecyclerView.layoutManager = LinearLayoutManager(this@HomeActivity)
-                        binding.assetsRecyclerView.adapter = assetAdapter
-                    } else {
-
-                    }
+    private fun getAllAssetsFor(inputString: String) {
+        showLoading(binding.progressBarLayout)
+        viewModel.assetsMap[inputString] = null
+        viewModel.getAllAssets(inputString).observe(this, object : Observer<ApiResponse> {
+            override fun onChanged(response: ApiResponse?) {
+                hideLoading(binding.progressBarLayout)
+                if (response?.data != null) {
+                    viewModel.assetsMap[inputString] = response.data as AssetModel
+                    assetAdapter?.assetModel = response.data as AssetModel
+                    assetAdapter?.assetModel?.apiCalled = true
+                    assetAdapter?.notifyDataSetChanged()
+                } else {
+                    initializeAssetsList()
+                    handleError(response?.error)
                 }
-            })
-        }
+                refreshRecentItems()
+            }
+        })
     }
 }

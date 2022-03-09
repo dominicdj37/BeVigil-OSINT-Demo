@@ -5,25 +5,25 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bevigilosintdemo.R
 import com.example.bevigilosintdemo.api.model.AssetModel
-import com.example.bevigilosintdemo.databinding.EmptyAssetsItemBinding
 import com.example.bevigilosintdemo.databinding.LayoutAssetItemBinding
+import com.example.bevigilosintdemo.databinding.LayoutAssetSearchDetailsItemBinding
 
-class AssetsAdapter(private val assetModel: AssetModel) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AssetsAdapter(var assetModel: AssetModel, private val assetListListener: AssetClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType) {
             R.layout.layout_asset_item ->
-                AssetViewHolder(LayoutAssetItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-            R.layout.empty_assets_item ->
-                AssetsEmptyViewHolder(EmptyAssetsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+                AssetViewHolder(LayoutAssetItemBinding.inflate(LayoutInflater.from(parent.context), parent, false), assetListListener)
+            R.layout.layout_asset_search_details_item ->
+                AssetsSearchDetailsViewHolder(LayoutAssetSearchDetailsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             else ->
-                AssetsEmptyViewHolder(EmptyAssetsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+                AssetsSearchDetailsViewHolder(LayoutAssetSearchDetailsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
         }
     }
 
     override fun getItemViewType(position: Int): Int {
         return if (assetModel.isEmpty()) {
-            R.layout.empty_assets_item
+            R.layout.layout_asset_search_details_item
         } else {
             R.layout.layout_asset_item
         }
@@ -32,7 +32,7 @@ class AssetsAdapter(private val assetModel: AssetModel) : RecyclerView.Adapter<R
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is AssetViewHolder -> holder.bindTo(assetModel, position)
-            is AssetsEmptyViewHolder -> holder.bindTo()
+            is AssetsSearchDetailsViewHolder -> holder.bindTo(assetModel)
         }
     }
 
@@ -43,4 +43,9 @@ class AssetsAdapter(private val assetModel: AssetModel) : RecyclerView.Adapter<R
             assetModel.getAssetsCount()
         }
     }
+}
+
+
+interface AssetClickListener {
+    fun viewMoreClicked(assetKey: String, packageID: String)
 }

@@ -8,8 +8,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_20"
-        app:cardCornerRadius="@dimen/dimen_8"
+        android:layout_margin="@dimen/dimen_24"
+        app:cardCornerRadius="@dimen/dimen_20"
         app:cardElevation="@dimen/dimen_10"
         app:cardUseCompatPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,11 +37,11 @@
             <View
                 android:id="@+id/divider"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/dimen_2"
+                android:layout_height="@dimen/dimen_1"
                 android:layout_marginStart="@dimen/dimen_20"
                 android:layout_marginTop="@dimen/dimen_5"
                 android:layout_marginEnd="@dimen/dimen_20"
-                android:background="@color/colorSecondary50per"
+                android:background="@color/colorSecondary20per"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/titleText" />
@@ -85,7 +85,7 @@
                     android:includeFontPadding="false"
                     android:layout_marginEnd="@dimen/dimen_5"
                     tools:text="View all 50 emails"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryVariant"
                     android:textSize="@dimen/text_size_14"
                     app:layout_constraintTop_toTopOf="@id/rightArrow"
                     app:layout_constraintBottom_toBottomOf="@id/rightArrow"
