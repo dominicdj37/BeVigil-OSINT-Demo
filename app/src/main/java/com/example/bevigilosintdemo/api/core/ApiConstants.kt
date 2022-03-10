@@ -17,4 +17,5 @@ object ApiConstants {
 
 
     const val ASSETS = "%s/all-assets/"
+    const val APPS = "%s/apps/"
 }

@@ -20,8 +20,9 @@
             android:exported="true"
             android:theme="@style/myDeviceTheme" />
         <activity
-            android:name=".ui.activities.DeviceAppListActivity"
+            android:name=".ui.activities.AppListActivity"
             android:exported="true"
+            android:windowSoftInputMode="adjustNothing"
             android:theme="@style/myDeviceTheme" />
         <activity
             android:name=".ui.activities.HomeActivity"

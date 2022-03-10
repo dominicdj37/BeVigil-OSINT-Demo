@@ -1,5 +1,6 @@
 package com.example.bevigilosintdemo.api.core
 
+import com.example.bevigilosintdemo.api.model.Apps
 import com.example.bevigilosintdemo.api.model.AssetModel
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -15,4 +16,12 @@ interface ApiInterface {
     )
     @GET()
     fun getAllAssets(@Url url: String): Observable<AssetModel>
+
+    @Headers(
+        "Accept: application/json",
+        "Content-Type: application/json",
+        "X-Access-Token: Gz6jvzUG6Gei0GOu"
+    )
+    @GET()
+    fun getApps(@Url url: String): Observable<Apps>
 }

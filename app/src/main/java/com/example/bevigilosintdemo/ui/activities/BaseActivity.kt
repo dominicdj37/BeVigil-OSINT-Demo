@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.bevigilosintdemo.R
 import com.example.bevigilosintdemo.api.model.Error
 import com.example.bevigilosintdemo.core.Constants.PACKAGE_NAME_KEY
+import com.example.bevigilosintdemo.core.Constants.SEARCH_DOMAIN
 import com.example.bevigilosintdemo.databinding.LayoutLoadingProgressBinding
 import com.example.bevigilosintdemo.utils.ResourceUtils.getStringResource
 import kotlinx.coroutines.*
@@ -18,9 +19,10 @@ open class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
     }
 
-
-    fun navigateToDeviceAppsActivity() {
-        startActivity(Intent(this, DeviceAppListActivity::class.java))
+    fun navigateToAppListActivity(isDomainSearch:Boolean = false) {
+        startActivity(Intent(this, AppListActivity::class.java).apply {
+            putExtra(SEARCH_DOMAIN, isDomainSearch)
+        })
     }
 
     fun navigateToAssetDetailsActivity(packageID: String) {

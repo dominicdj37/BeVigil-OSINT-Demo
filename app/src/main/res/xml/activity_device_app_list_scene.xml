@@ -84,10 +84,12 @@
             android:id="@+id/showAppsLabel"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="@dimen/dimen_10"
-            android:layout_width="wrap_content"
+            android:elevation="@dimen/dimen_20"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="@id/appCountText"
-            motion:layout_constraintTop_toTopOf="@id/appCountText" />
+            motion:layout_constraintStart_toEndOf="@id/collapsedAppCountText"
+            motion:layout_constraintBottom_toBottomOf="@id/collapsedAppCountText"
+            motion:layout_constraintTop_toTopOf="@id/collapsedAppCountText" />
         <Constraint
             android:id="@+id/collapsedAppCountText"
             android:elevation="@dimen/dimen_20"

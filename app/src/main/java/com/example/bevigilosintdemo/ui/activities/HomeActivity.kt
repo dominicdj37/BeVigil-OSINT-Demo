@@ -1,6 +1,7 @@
 package com.example.bevigilosintdemo.ui.activities
 
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.constraintlayout.motion.widget.MotionLayout
@@ -12,7 +13,6 @@ import com.example.bevigilosintdemo.api.core.ApiResponse
 import com.example.bevigilosintdemo.api.model.AssetModel
 import com.example.bevigilosintdemo.applyTopWindowInsetToMargin
 import com.example.bevigilosintdemo.core.Constants.ASSET_TYPE_KEY
-import com.example.bevigilosintdemo.core.Constants.PACKAGE_NAME_KEY
 import com.example.bevigilosintdemo.databinding.ActivityHomeBinding
 import com.example.bevigilosintdemo.hideKeyBoardAndRemoveFocus
 import com.example.bevigilosintdemo.showKeyBoardAndFocus
@@ -23,9 +23,7 @@ import com.example.bevigilosintdemo.ui.fragments.AssetDetailsBottomSheetFragment
 import com.example.bevigilosintdemo.utils.ResourceUtils.getStringResource
 import com.example.bevigilosintdemo.viewmodels.HomeViewModel
 import kotlinx.coroutines.*
-import android.content.pm.PackageManager
 
-import android.content.pm.ApplicationInfo
 import com.example.bevigilosintdemo.core.Repo
 import com.example.bevigilosintdemo.utils.ResourceUtils.getDrawableResource
 
@@ -49,15 +47,18 @@ class HomeActivity : BaseActivity() {
         refreshRecentItems()
         initializeSearch()
 
-
         getDeviceApps()
     }
 
     private fun getDeviceApps() {
-        binding.deviceAppsInfoView.setup(packageManager) {
-            navigateToDeviceAppsActivity()
-        }
+        binding.deviceAppsInfoView.setup(packageManager, onDeviceSearchClick =  {
+            navigateToAppListActivity()
+        }, onDomainSearchClick = {
+            navigateToAppListActivity(isDomainSearch = true)
+        })
     }
+
+
 
 
     private fun refreshRecentItems() {
@@ -115,10 +116,11 @@ class HomeActivity : BaseActivity() {
                 if(p1 == R.id.collapsedSet) {
                     initializeAssetsList()
                     isSearchLayoutExpanded = false
-                    binding.searchInputEditText.isEnabled = false
+                    binding.searchInputEditText.visibility = View.GONE
+                    binding.searchInputEditText.hideKeyBoardAndRemoveFocus()
                 } else if(p1 == R.id.expandedSet) {
                     isSearchLayoutExpanded = true
-                    binding.searchInputEditText.isEnabled = true
+                    binding.searchInputEditText.visibility = View.VISIBLE
                 }
             }
             override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {}
@@ -126,8 +128,7 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun initializeToolbar() {
-        binding.toolbarLayout.setup(getStringResource(R.string.home_page_title),
-            getDrawableResource(R.drawable.ic_nav_menu), leftClick = {
+        binding.toolbarLayout.setup(getStringResource(R.string.home_page_title), leftClick = {
             //todo add side menu
         })
         binding.statusBarReference.applyTopWindowInsetToMargin()

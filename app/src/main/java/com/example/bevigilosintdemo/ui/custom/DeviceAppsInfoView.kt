@@ -4,18 +4,12 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
-import android.graphics.Typeface
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.animation.DecelerateInterpolator
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.bevigilosintdemo.R
 import com.example.bevigilosintdemo.databinding.LayoutDeviceAppsInfoBinding
-import com.example.bevigilosintdemo.databinding.LayoutRecentItemLabelBinding
-import com.example.bevigilosintdemo.utils.ResourceUtils.getColorResource
-import com.example.bevigilosintdemo.utils.ResourceUtils.getDrawableResource
 import kotlinx.coroutines.*
 
 class DeviceAppsInfoView : ConstraintLayout {
@@ -38,7 +32,7 @@ class DeviceAppsInfoView : ConstraintLayout {
         binding = LayoutDeviceAppsInfoBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
-    fun setup(packageManager: PackageManager, onClick: ()->Unit = {} ){
+    fun setup(packageManager: PackageManager, onDeviceSearchClick: ()->Unit = {}, onDomainSearchClick: ()->Unit = {} ){
         val packages = packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
         animateNumber(binding.appCountText, packages.size)
         packages.filter { packageInfo -> (packageInfo.applicationInfo.flags and ApplicationInfo.FLAG_SYSTEM) == 0 }.let { installedApps ->
@@ -47,7 +41,11 @@ class DeviceAppsInfoView : ConstraintLayout {
         }
 
         binding.checkNowLabel.setOnClickListener {
-            onClick.invoke()
+            onDeviceSearchClick.invoke()
+        }
+
+        binding.domainSearchLabel.setOnClickListener {
+            onDomainSearchClick.invoke()
         }
     }
 
