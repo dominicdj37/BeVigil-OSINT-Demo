@@ -14,10 +14,6 @@ class DeviceListAdapter(var packageList: ArrayList<PackageInfo>, val packageMana
         return DeviceAppViewHolder(LayoutDeviceAppItemBinding.inflate(LayoutInflater.from(parent.context), parent, false), appClickListener)
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return R.layout.layout_asset_search_details_item
-    }
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is DeviceAppViewHolder -> holder.bindTo(packageList[position], packageManager)

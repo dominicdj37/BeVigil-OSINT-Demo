@@ -1,38 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_device_app_list_scene"
     tools:context=".ui.activities.DeviceAppListActivity">
 
-    <com.example.bevigilosintdemo.ui.custom.ToolBarView
-        android:id="@+id/toolbarLayout"
+        <com.example.bevigilosintdemo.ui.custom.ToolBarView
+            android:id="@+id/toolbarLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:elevation="@dimen/dimen_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/referenceGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".4"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:elevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/referenceGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarLayout">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_24"
+        android:includeFontPadding="false"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/text_size_60"
+        android:elevation="@dimen/dimen_20"
+        android:alpha="1"
+        app:layout_constraintBottom_toTopOf="@id/appsFoundLabel"
+        app:layout_constraintStart_toStartOf="@id/headerLayout"
+        tools:text="248" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appTotalCountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:alpha="1"
+        android:elevation="@dimen/dimen_20"
+        android:includeFontPadding="false"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/text_size_24"
+        app:layout_constraintBottom_toBottomOf="@id/appCountText"
+        app:layout_constraintStart_toEndOf="@id/appCountText"
+        tools:text="/200" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/showAppsLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:elevation="@dimen/dimen_10"
-        app:layout_constraintStart_toStartOf="parent"
+        android:elevation="@dimen/dimen_20"
+        android:layout_marginEnd="@dimen/dimen_24"
+        android:includeFontPadding="false"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorSecondaryVariant"
+        android:textSize="@dimen/text_size_18"
+        app:layout_constraintBottom_toBottomOf="@id/appCountText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/appTotalCountText"
+        app:layout_constraintTop_toTopOf="@id/appCountText"
+        tools:text="@string/show_system_apps" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appsFoundLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_24"
+        android:layout_marginEnd="@dimen/dimen_18"
+        android:layout_marginBottom="@dimen/dimen_8"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/text_size_20"
+        android:alpha="1"
+        app:layout_constraintBottom_toTopOf="@id/hintTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/system_apps_found" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/hintTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_24"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:textColor="@color/colorPrimaryVariant"
+        android:textSize="@dimen/text_size_14"
+        android:alpha="1"
+        app:layout_constraintBottom_toBottomOf="@id/headerLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/click_app_hint" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/collapsedAppCountText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:textAlignment="center"
+        android:elevation="@dimen/dimen_20"
+        android:layout_marginStart="@dimen/dimen_24"
+        android:textColor="@color/colorSecondaryVariant"
+        android:textSize="@dimen/text_size_30"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="@id/headerLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/headerLayout"
+        tools:text="20 Apps" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/appListRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/dimen_50"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-    <include
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:id="@+id/progressBarLayout"
-        layout="@layout/layout_loading_progress"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarLayout" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="@id/referenceGuideline" />
+
+    <include
+        android:id="@+id/progressBarLayout"
+        layout="@layout/layout_loading_progress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout" />
+</androidx.constraintlayout.motion.widget.MotionLayout>

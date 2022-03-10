@@ -37,5 +37,11 @@
     <string name="apps_found_on_your_device">Apps found on your device</string>
     <string name="check_now">Check your Apps</string>
     <string name="my_apps">My Apps</string>
+    <string name="click_app_hint">Tap on any app to search our database for assets.</string>
+    <string name="show_system_apps">Show system apps</string>
+    <string name="show_installed_apps">Show installed apps</string>
+    <string name="system_apps_found">System Apps found on your device</string>
+    <string name="installed_apps_found">Installed Apps found on your device</string>
+    <string name="apps">Apps</string>
 
 </resources>

@@ -5,4 +5,5 @@ import androidx.lifecycle.ViewModel
 
 class DeviceAppListViewModel: ViewModel() {
     val deviceList: ArrayList<PackageInfo> = arrayListOf()
+    var showingInstalledApps = true
 }
