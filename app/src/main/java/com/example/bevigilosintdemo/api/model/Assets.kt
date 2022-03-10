@@ -1,5 +1,6 @@
 package com.example.bevigilosintdemo.api.model
 
+import android.graphics.drawable.Drawable
 import com.example.bevigilosintdemo.R
 import com.example.bevigilosintdemo.core.AssetKeyType
 import com.example.bevigilosintdemo.utils.ResourceUtils.getStringResource
@@ -18,6 +19,8 @@ class AssetModel {
     var detail: String? = null
 
     var apiCalled = false
+    var appName: String? = null
+    var appIcon: Drawable? = null
 
     fun getKeyAt(index: Int) = assets.keys.elementAt(index)
     fun getAssetAt(index: Int) = assets.values.elementAt(index)
@@ -61,4 +64,11 @@ class AssetModel {
         return ""
     }
 
+    fun getTotalAssetCount(): Int {
+        var totalAssetCount = 0
+        assets.forEach {
+            totalAssetCount += getAssetCountAt(it.key)
+        }
+        return totalAssetCount
+    }
 }

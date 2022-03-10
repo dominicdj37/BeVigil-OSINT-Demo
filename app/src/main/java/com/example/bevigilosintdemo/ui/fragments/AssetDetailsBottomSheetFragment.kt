@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.activityViewModels
 import com.example.bevigilosintdemo.core.Constants
+import com.example.bevigilosintdemo.core.Repo
 import com.example.bevigilosintdemo.databinding.LayoutAssetsDetailsBottomSheetBinding
 import com.example.bevigilosintdemo.utils.ResourceUtils.getColorResource
 import com.example.bevigilosintdemo.viewmodels.HomeViewModel
@@ -16,8 +17,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class AssetDetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: LayoutAssetsDetailsBottomSheetBinding
-    private val viewModel: HomeViewModel by activityViewModels()
-
 
     //region lifecycle callbacks
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -30,10 +29,8 @@ class AssetDetailsBottomSheetFragment : BottomSheetDialogFragment() {
 
     override fun onStart() {
         super.onStart()
-        arguments?.get(Constants.PACKAGE_NAME_KEY).takeIf { it is String }?.let { packageKey ->
-            arguments?.get(Constants.ASSET_TYPE_KEY).takeIf { it is String }?.let { assetKey ->
-                showDetailedAsset(packageKey as String, assetKey as String)
-            }
+        arguments?.get(Constants.ASSET_TYPE_KEY).takeIf { it is String }?.let { assetKey ->
+            showDetailedAsset(assetKey as String)
         }
     }
     //endregion
@@ -49,10 +46,10 @@ class AssetDetailsBottomSheetFragment : BottomSheetDialogFragment() {
         }
     }
 
-    private fun showDetailedAsset(packageKey: String, assetKey: String) {
-        binding.titleText.text = viewModel.assetsMap[packageKey]?.getTitleStringForAsset(assetKey)
-        binding.subtitleText.text = viewModel.assetsMap[packageKey]?.packageID
-        viewModel.assetsMap[packageKey]?.getAssetListString(assetKey)?.let {
+    private fun showDetailedAsset(assetKey: String) {
+        binding.titleText.text = Repo.selectedAsset?.getTitleStringForAsset(assetKey)
+        binding.subtitleText.text = Repo.selectedAsset?.packageID
+        Repo.selectedAsset?.getAssetListString(assetKey)?.let {
             binding.detailedText.text = it
         }
     }

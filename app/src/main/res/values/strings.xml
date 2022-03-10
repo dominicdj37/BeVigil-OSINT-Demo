@@ -19,6 +19,7 @@
     <string name="asset_title_firebase_url">{count} Firebase URL</string>
 
     <string name="view_all_label">View all {asset}</string>
+    <string name="all_assets">All Assets</string>
     <string name="loading">Loading…</string>
     <string name="no_recent_items_text">No Recent Searches</string>
     <string name="recent_items_text">Your Recent Searches</string>
@@ -43,5 +44,6 @@
     <string name="system_apps_found">System Apps found on your device</string>
     <string name="installed_apps_found">Installed Apps found on your device</string>
     <string name="apps">Apps</string>
+    <string name="assets_found_count">{count} Assets found.</string>
 
 </resources>

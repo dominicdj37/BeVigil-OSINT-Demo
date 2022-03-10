@@ -31,7 +31,7 @@ class DeviceAppListActivity : BaseActivity() {
 
     private val onAppClickListener = object: AppClickListener {
         override fun onAppClicked(packageID: String) {
-            //todo open assets
+            navigateToAssetDetailsActivity(packageID)
         }
     }
 

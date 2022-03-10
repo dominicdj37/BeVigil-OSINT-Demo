@@ -16,9 +16,13 @@
         android:theme="@style/Theme.BeVigilOSINTDemo"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.activities.AssetDetailsActivity"
+            android:exported="true"
+            android:theme="@style/myDeviceTheme" />
+        <activity
             android:name=".ui.activities.DeviceAppListActivity"
-            android:theme="@style/myDeviceTheme"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/myDeviceTheme" />
         <activity
             android:name=".ui.activities.HomeActivity"
             android:exported="true"

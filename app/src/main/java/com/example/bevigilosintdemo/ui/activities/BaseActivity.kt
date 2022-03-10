@@ -6,9 +6,9 @@ import android.os.Message
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
 import com.example.bevigilosintdemo.R
 import com.example.bevigilosintdemo.api.model.Error
+import com.example.bevigilosintdemo.core.Constants.PACKAGE_NAME_KEY
 import com.example.bevigilosintdemo.databinding.LayoutLoadingProgressBinding
 import com.example.bevigilosintdemo.utils.ResourceUtils.getStringResource
 import kotlinx.coroutines.*
@@ -21,6 +21,12 @@ open class BaseActivity : AppCompatActivity() {
 
     fun navigateToDeviceAppsActivity() {
         startActivity(Intent(this, DeviceAppListActivity::class.java))
+    }
+
+    fun navigateToAssetDetailsActivity(packageID: String) {
+        startActivity(Intent(this, AssetDetailsActivity::class.java).apply {
+            putExtra(PACKAGE_NAME_KEY, packageID)
+        })
     }
 
     fun showLoading(binding: LayoutLoadingProgressBinding) {

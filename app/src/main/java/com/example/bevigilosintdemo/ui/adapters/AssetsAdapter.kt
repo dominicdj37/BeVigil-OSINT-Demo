@@ -7,6 +7,7 @@ import com.example.bevigilosintdemo.R
 import com.example.bevigilosintdemo.api.model.AssetModel
 import com.example.bevigilosintdemo.databinding.LayoutAssetItemBinding
 import com.example.bevigilosintdemo.databinding.LayoutAssetSearchDetailsItemBinding
+import com.example.bevigilosintdemo.databinding.LayoutAssetsInfoLayoutBinding
 
 class AssetsAdapter(var assetModel: AssetModel, private val assetListListener: AssetClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -16,6 +17,8 @@ class AssetsAdapter(var assetModel: AssetModel, private val assetListListener: A
                 AssetViewHolder(LayoutAssetItemBinding.inflate(LayoutInflater.from(parent.context), parent, false), assetListListener)
             R.layout.layout_asset_search_details_item ->
                 AssetsSearchDetailsViewHolder(LayoutAssetSearchDetailsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            R.layout.layout_assets_info_layout ->
+                AssetsInfoViewHolder(LayoutAssetsInfoLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             else ->
                 AssetsSearchDetailsViewHolder(LayoutAssetSearchDetailsItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
         }
@@ -25,13 +28,18 @@ class AssetsAdapter(var assetModel: AssetModel, private val assetListListener: A
         return if (assetModel.isEmpty()) {
             R.layout.layout_asset_search_details_item
         } else {
-            R.layout.layout_asset_item
+            if(position == 0) {
+                R.layout.layout_assets_info_layout
+            } else {
+                R.layout.layout_asset_item
+            }
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
-            is AssetViewHolder -> holder.bindTo(assetModel, position)
+            is AssetViewHolder -> holder.bindTo(assetModel, position - 1)
+            is AssetsInfoViewHolder -> holder.bindTo(assetModel)
             is AssetsSearchDetailsViewHolder -> holder.bindTo(assetModel)
         }
     }
@@ -40,7 +48,7 @@ class AssetsAdapter(var assetModel: AssetModel, private val assetListListener: A
         return if(assetModel.isEmpty()) {
             1
         } else {
-            assetModel.getAssetsCount()
+            assetModel.getAssetsCount() + 1
         }
     }
 }

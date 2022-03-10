@@ -26,4 +26,29 @@
     <color name="black20">#33000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
+
+    <color name="MediumSlateBlue">#7B68EE</color>
+    <color name="MediumAquamarine">#66CDAA</color>
+    <color name="MediumVioletRed">#C71585</color>
+    <color name="MediumOrchid">#BA55D3</color>
+    <color name="MediumPurple">#9370DB</color>
+    <color name="MediumBlue">#0000CD</color>
+    <color name="MediumTurquoise">#48D1CC</color>
+    <color name="MediumSeaGreen">#3CB371</color>
+    <color name="MediumSpringGreen">#00FA9A</color>
+
+    <!-- Generic Light -->
+
+    <color name="holo_blue_bright">#ff00ddff</color>
+    <color name="holo_blue_dark">#ff0099cc</color>
+    <color name="holo_blue_light">#ff33b5e5</color>
+    <color name="holo_green_dark">#ff669900</color>
+    <color name="holo_green_light">#ff99cc00</color>
+    <color name="holo_orange_dark">#ffff8800</color>
+    <color name="holo_orange_light">#ffffbb33</color>
+    <color name="holo_purple">#ffaa66cc</color>
+    <color name="holo_red_dark">#ffcc0000</color>
+    <color name="holo_red_light">#ffff4444</color>
+
+
 </resources>

@@ -26,6 +26,7 @@ import kotlinx.coroutines.*
 import android.content.pm.PackageManager
 
 import android.content.pm.ApplicationInfo
+import com.example.bevigilosintdemo.core.Repo
 import com.example.bevigilosintdemo.utils.ResourceUtils.getDrawableResource
 
 
@@ -90,10 +91,10 @@ class HomeActivity : BaseActivity() {
 
     private val assetListListener = object :AssetClickListener {
         override fun viewMoreClicked(assetKey: String, packageID: String) {
+            Repo.selectedAsset = viewModel.assetsMap[packageID]
             val detailsBottomSheet = AssetDetailsBottomSheetFragment()
             detailsBottomSheet.arguments = Bundle().apply {
                 putString(ASSET_TYPE_KEY, assetKey)
-                putString(PACKAGE_NAME_KEY, packageID)
             }
             detailsBottomSheet.show(supportFragmentManager, detailsBottomSheet.tag)
         }
