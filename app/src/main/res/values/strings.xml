@@ -49,5 +49,7 @@
     <string name="apps">Apps</string>
     <string name="assets_found_count">{count} Assets found.</string>
     <string name="apps_associated_with_text">Associated with {name}</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_with_google">Sign in With Google</string>
 
 </resources>

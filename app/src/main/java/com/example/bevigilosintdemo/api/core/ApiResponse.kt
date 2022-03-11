@@ -17,6 +17,11 @@ class ApiResponse() {
     var data: Any? = null
     var error: Error? = null
     var isSuccess = data != null && error == null
+    var unknownError = Error().apply {
+        mCode = HttpStatusCode.notFound
+        message = getStringResource(R.string.unknown_error)
+    }
+
 
     constructor(data: Any) : this() {
         this.data = data

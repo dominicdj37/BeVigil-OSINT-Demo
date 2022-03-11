@@ -5,11 +5,15 @@ import com.example.bevigilosintdemo.utils.ResourceUtils.getColorResource
 
 object Constants {
 
+    const val APP_TAG = "bevigil_log_tag"
+
     const val ASSET_TYPE_KEY = "asset_type_key"
     const val PACKAGE_NAME_KEY = "package_name_key"
     const val SEARCH_DOMAIN = "search_mode_domain"
     const val COUNT_TAG = "{count}"
     const val NAME_TAG = "{name}"
+
+
 }
 
 object AssetKeyType {

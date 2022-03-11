@@ -5,12 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.fragment.app.activityViewModels
 import com.example.bevigilosintdemo.core.Constants
-import com.example.bevigilosintdemo.core.Repo
+import com.example.bevigilosintdemo.core.SessionRepo
 import com.example.bevigilosintdemo.databinding.LayoutAssetsDetailsBottomSheetBinding
 import com.example.bevigilosintdemo.utils.ResourceUtils.getColorResource
-import com.example.bevigilosintdemo.viewmodels.HomeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -47,9 +45,9 @@ class AssetDetailsBottomSheetFragment : BottomSheetDialogFragment() {
     }
 
     private fun showDetailedAsset(assetKey: String) {
-        binding.titleText.text = Repo.selectedAsset?.getTitleStringForAsset(assetKey)
-        binding.subtitleText.text = Repo.selectedAsset?.packageID
-        Repo.selectedAsset?.getAssetListString(assetKey)?.let {
+        binding.titleText.text = SessionRepo.selectedAsset?.getTitleStringForAsset(assetKey)
+        binding.subtitleText.text = SessionRepo.selectedAsset?.packageID
+        SessionRepo.selectedAsset?.getAssetListString(assetKey)?.let {
             binding.detailedText.text = it
         }
     }

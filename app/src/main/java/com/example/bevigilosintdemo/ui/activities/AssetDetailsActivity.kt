@@ -8,7 +8,7 @@ import com.example.bevigilosintdemo.R
 import com.example.bevigilosintdemo.api.core.ApiResponse
 import com.example.bevigilosintdemo.api.model.AssetModel
 import com.example.bevigilosintdemo.core.Constants
-import com.example.bevigilosintdemo.core.Repo
+import com.example.bevigilosintdemo.core.SessionRepo
 import com.example.bevigilosintdemo.databinding.ActivityAssetDetailsBinding
 import com.example.bevigilosintdemo.ui.adapters.AssetClickListener
 import com.example.bevigilosintdemo.ui.adapters.AssetsAdapter
@@ -43,7 +43,7 @@ class AssetDetailsActivity : BaseActivity() {
 
     private val assetListListener = object : AssetClickListener {
         override fun viewMoreClicked(assetKey: String, packageID: String) {
-            Repo.selectedAsset = viewModel.asset
+            SessionRepo.selectedAsset = viewModel.asset
             val detailsBottomSheet = AssetDetailsBottomSheetFragment()
             detailsBottomSheet.arguments = Bundle().apply {
                 putString(Constants.ASSET_TYPE_KEY, assetKey)

@@ -19,6 +19,10 @@ open class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
     }
 
+    fun navigateToHomeActivity() {
+        startActivity(Intent(this, HomeActivity::class.java))
+    }
+
     fun navigateToAppListActivity(isDomainSearch:Boolean = false) {
         startActivity(Intent(this, AppListActivity::class.java).apply {
             putExtra(SEARCH_DOMAIN, isDomainSearch)

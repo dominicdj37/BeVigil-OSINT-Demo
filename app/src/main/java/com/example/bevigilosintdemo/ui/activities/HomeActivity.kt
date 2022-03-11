@@ -24,8 +24,7 @@ import com.example.bevigilosintdemo.utils.ResourceUtils.getStringResource
 import com.example.bevigilosintdemo.viewmodels.HomeViewModel
 import kotlinx.coroutines.*
 
-import com.example.bevigilosintdemo.core.Repo
-import com.example.bevigilosintdemo.utils.ResourceUtils.getDrawableResource
+import com.example.bevigilosintdemo.core.SessionRepo
 
 
 @DelicateCoroutinesApi
@@ -92,7 +91,7 @@ class HomeActivity : BaseActivity() {
 
     private val assetListListener = object :AssetClickListener {
         override fun viewMoreClicked(assetKey: String, packageID: String) {
-            Repo.selectedAsset = viewModel.assetsMap[packageID]
+            SessionRepo.selectedAsset = viewModel.assetsMap[packageID]
             val detailsBottomSheet = AssetDetailsBottomSheetFragment()
             detailsBottomSheet.arguments = Bundle().apply {
                 putString(ASSET_TYPE_KEY, assetKey)
