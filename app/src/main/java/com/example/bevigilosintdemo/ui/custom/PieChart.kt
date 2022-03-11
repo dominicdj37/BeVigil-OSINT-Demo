@@ -82,7 +82,6 @@ class PieChart : View {
         super.onSizeChanged(xNew, yNew, xOld, yOld)
         parentWidth = xNew
         parentHeight = yNew
-
         rectF = RectF(0f,0f, parentWidth.toFloat(), parentHeight.toFloat())
     }
 }

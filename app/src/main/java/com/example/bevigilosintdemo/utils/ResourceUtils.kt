@@ -20,17 +20,10 @@ object ResourceUtils {
     }
     //endregion
 
-    fun getResource(): Resources? {
-        return contextRef?.get()?.resources
-    }
 
     //region resource values
     fun getStringResource(id: Int): String {
         return contextRef?.get()?.resources?.getString(id) ?: ""
-    }
-
-    fun getDimenResource(id: Int): Int {
-        return contextRef?.get()?.resources?.getDimension(id)?.toInt() ?: 0
     }
 
     fun getDrawableResource(id: Int): Drawable? {
@@ -43,10 +36,6 @@ object ResourceUtils {
             return ContextCompat.getColor(context, id)
         }
         return null
-    }
-
-    fun getIntegerResource(id: Int): Int {
-        return contextRef?.get()?.resources?.getInteger(id) ?: 0
     }
     //endregion
 }

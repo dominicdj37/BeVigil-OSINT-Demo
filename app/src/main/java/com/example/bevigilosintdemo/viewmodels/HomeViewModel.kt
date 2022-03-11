@@ -7,14 +7,10 @@ import com.example.bevigilosintdemo.api.model.AssetModel
 import com.example.bevigilosintdemo.api.repository.OSINTRepository
 
 class HomeViewModel : ViewModel() {
+
     var assetsMap: HashMap<String,AssetModel?> = hashMapOf()
 
     fun getAllAssets(packageID: String): MutableLiveData<ApiResponse> {
         return OSINTRepository.getInstance().getAllAssets(packageID)
     }
-
-    fun clearAllRecentItems() {
-        assetsMap.clear()
-    }
-
 }

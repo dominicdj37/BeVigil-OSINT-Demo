@@ -11,16 +11,13 @@ interface ApiInterface {
 
     @Headers(
         "Accept: application/json",
-        "Content-Type: application/json",
-        "X-Access-Token: Gz6jvzUG6Gei0GOu"
-    )
+        "Content-Type: application/json")
     @GET()
     fun getAllAssets(@Url url: String): Observable<AssetModel>
 
     @Headers(
         "Accept: application/json",
-        "Content-Type: application/json",
-        "X-Access-Token: Gz6jvzUG6Gei0GOu"
+        "Content-Type: application/json"
     )
     @GET()
     fun getApps(@Url url: String): Observable<Apps>

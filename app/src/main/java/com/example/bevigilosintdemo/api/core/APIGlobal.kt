@@ -1,7 +1,10 @@
 package com.example.bevigilosintdemo.api.core
 
+import com.example.bevigilosintdemo.api.core.ApiConstants.TOKEN_KEY
+import com.example.bevigilosintdemo.core.SessionRepo
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -12,7 +15,6 @@ object APIGlobal {
 
     private fun getClient(): Retrofit {
         val gson = GsonBuilder().serializeNulls().setLenient().create()
-
         return Retrofit.Builder()
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
@@ -21,8 +23,7 @@ object APIGlobal {
                 getOkHttpClient(
                     getHttpLoggingInterceptor()
                 )
-            )
-            .build()
+            ).build()
     }
 
     fun create(): ApiInterface {
@@ -38,8 +39,13 @@ object APIGlobal {
             .readTimeout(1, TimeUnit.MINUTES)
             .writeTimeout(5, TimeUnit.MINUTES)
             .connectTimeout(1, TimeUnit.MINUTES)
+            .addInterceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .addHeader(TOKEN_KEY, SessionRepo.settings?.btocken ?: "")
+                    .build()
+                chain.proceed(request)
+            }
 
-        //enable http logging for development environment
         client.addInterceptor(httpLoggingInterceptor)
         return client.build()
     }
@@ -51,6 +57,6 @@ object APIGlobal {
     }
 
     fun getBaseURL(): String {
-        return "https://osint.bevigil.com/api/"
+        return SessionRepo.settings?.baseUrl ?: ""
     }
 }

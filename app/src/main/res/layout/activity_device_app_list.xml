@@ -7,21 +7,22 @@
     app:layoutDescription="@xml/activity_device_app_list_scene"
     tools:context=".ui.activities.AppListActivity">
 
-        <com.example.bevigilosintdemo.ui.custom.ToolBarView
-            android:id="@+id/toolbarLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:elevation="@dimen/dimen_20"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <com.example.bevigilosintdemo.ui.custom.ToolBarView
+        android:id="@+id/toolbarLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="@dimen/dimen_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/referenceGuideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".4"/>
+        app:layout_constraintGuide_percent=".4" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerLayout"
@@ -41,11 +42,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_24"
+        android:alpha="1"
+        android:elevation="@dimen/dimen_20"
         android:includeFontPadding="false"
         android:textColor="@color/grey"
         android:textSize="@dimen/text_size_60"
-        android:elevation="@dimen/dimen_20"
-        android:alpha="1"
         app:layout_constraintBottom_toTopOf="@id/appsFoundLabel"
         app:layout_constraintStart_toStartOf="@id/headerLayout"
         tools:text="248" />
@@ -68,8 +69,8 @@
         android:id="@+id/showAppsLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/dimen_20"
         android:layout_marginEnd="@dimen/dimen_24"
+        android:elevation="@dimen/dimen_20"
         android:includeFontPadding="false"
         android:textAlignment="textEnd"
         android:textColor="@color/colorSecondaryVariant"
@@ -87,9 +88,9 @@
         android:layout_marginStart="@dimen/dimen_24"
         android:layout_marginEnd="@dimen/dimen_18"
         android:layout_marginBottom="@dimen/dimen_8"
+        android:alpha="1"
         android:textColor="@color/grey"
         android:textSize="@dimen/text_size_20"
-        android:alpha="1"
         app:layout_constraintBottom_toTopOf="@id/hintTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,25 +102,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dimen_24"
         android:layout_marginBottom="@dimen/dimen_10"
+        android:alpha="1"
+        android:text="@string/click_app_hint"
         android:textColor="@color/colorPrimaryVariant"
         android:textSize="@dimen/text_size_14"
-        android:alpha="1"
         app:layout_constraintBottom_toBottomOf="@id/headerLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/click_app_hint" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/collapsedAppCountText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_24"
+        android:alpha="0"
+        android:elevation="@dimen/dimen_20"
         android:includeFontPadding="false"
         android:textAlignment="center"
-        android:elevation="@dimen/dimen_20"
-        android:layout_marginStart="@dimen/dimen_24"
         android:textColor="@color/colorSecondaryVariant"
         android:textSize="@dimen/text_size_30"
-        android:alpha="0"
         app:layout_constraintBottom_toBottomOf="@id/headerLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/headerLayout"
@@ -129,8 +130,8 @@
         android:id="@+id/searchContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/dimen_20"
         android:background="@color/white"
+        android:elevation="@dimen/dimen_20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbarLayout">
@@ -147,9 +148,9 @@
             android:text="@string/domain_name_search_hint"
             android:textColor="@color/colorPrimaryVariant"
             android:textSize="@dimen/text_size_14"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/searchTextInputContainer" />
 
 

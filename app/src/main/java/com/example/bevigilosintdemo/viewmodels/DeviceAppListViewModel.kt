@@ -20,7 +20,6 @@ class DeviceAppListViewModel: ViewModel() {
     val displayingAppList: ArrayList<App> = arrayListOf()
     var showingInstalledApps = true
 
-
     fun getAppListFromPackages(systemPackages: List<PackageInfo>, packageManager: PackageManager, onReady: ( ArrayList<App>)-> Unit) {
         GlobalScope.launch {
             val returnAppList: ArrayList<App> = arrayListOf()

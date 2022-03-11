@@ -5,7 +5,6 @@ import com.google.firebase.firestore.IgnoreExtraProperties
 
 @IgnoreExtraProperties
 @Keep
-data class Settings(
-    var btocken: String? = null,
-    var baseUrl: String? = null
+data class SearchHistory(
+    val packageNames: ArrayList<String> = arrayListOf()
 )

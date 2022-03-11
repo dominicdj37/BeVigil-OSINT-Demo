@@ -8,11 +8,7 @@ class AppContext: Application() {
     override fun onCreate() {
         super.onCreate()
         ResourceUtils.initialize(this)
-
-        //todo initialize components
     }
-
-
 }
 
 

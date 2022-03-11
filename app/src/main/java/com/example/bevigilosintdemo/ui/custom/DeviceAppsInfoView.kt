@@ -49,7 +49,7 @@ class DeviceAppsInfoView : ConstraintLayout {
         }
     }
 
-    fun animateNumber(view: AppCompatTextView, toNumber: Int) {
+    private fun animateNumber(view: AppCompatTextView, toNumber: Int) {
         GlobalScope.launch {
             delay(500)
             withContext(Dispatchers.Main) {

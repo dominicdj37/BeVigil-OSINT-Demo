@@ -1,59 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<MotionScene 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
         motion:constraintSetEnd="@+id/expandedSet"
         motion:constraintSetStart="@id/collapsedSet"
-        motion:motionInterpolator="easeInOut"
-        motion:duration="300">
+        motion:duration="300"
+        motion:motionInterpolator="easeInOut">
         <OnSwipe
-        motion:touchAnchorId="@+id/bottomBackground"
-        motion:touchAnchorSide="top"
-        motion:dragDirection="dragUp" />
-       <KeyFrameSet>
-           <KeyPosition
-               motion:motionTarget="@+id/searchButton"
-               motion:keyPositionType="parentRelative"
-               motion:percentX=".5"
-               motion:framePosition="90"/>
-           <KeyAttribute
-               motion:motionTarget="@+id/searchTextInputContainer"
-               motion:framePosition="0"
-               android:alpha="0" />
-           <KeyAttribute
-               motion:motionTarget="@+id/searchTextInputContainer"
-               motion:framePosition="90"
-               android:alpha="0" />
-           <KeyAttribute
-               motion:motionTarget="@+id/searchTextInputContainer"
-               motion:framePosition="100"
-               android:alpha="1" />
+            motion:dragDirection="dragUp"
+            motion:touchAnchorId="@+id/bottomBackground"
+            motion:touchAnchorSide="top" />
+        <KeyFrameSet>
+            <KeyPosition
+                motion:framePosition="90"
+                motion:keyPositionType="parentRelative"
+                motion:motionTarget="@+id/searchButton"
+                motion:percentX=".5" />
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="0"
+                motion:motionTarget="@+id/searchTextInputContainer" />
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="90"
+                motion:motionTarget="@+id/searchTextInputContainer" />
+            <KeyAttribute
+                android:alpha="1"
+                motion:framePosition="100"
+                motion:motionTarget="@+id/searchTextInputContainer" />
 
 
-           <KeyAttribute
-               motion:framePosition="100"
-               motion:motionTarget="@id/assetsRecyclerView">
-               <CustomAttribute
-                   motion:attributeName="visibility"
-                   motion:customIntegerValue="0" />
-           </KeyAttribute>
-           <KeyAttribute
-               motion:framePosition="50"
-               motion:motionTarget="@id/assetsRecyclerView">
-               <CustomAttribute
-                   motion:attributeName="visibility"
-                   motion:customIntegerValue="0" />
-           </KeyAttribute>
-           <KeyAttribute
-               motion:framePosition="0"
-               motion:motionTarget="@id/assetsRecyclerView">
-               <CustomAttribute
-                   motion:attributeName="visibility"
-                   motion:customIntegerValue="8" />
-           </KeyAttribute>
-       </KeyFrameSet>
+            <KeyAttribute
+                motion:framePosition="100"
+                motion:motionTarget="@id/assetsRecyclerView">
+                <CustomAttribute
+                    motion:attributeName="visibility"
+                    motion:customIntegerValue="0" />
+            </KeyAttribute>
+            <KeyAttribute
+                motion:framePosition="50"
+                motion:motionTarget="@id/assetsRecyclerView">
+                <CustomAttribute
+                    motion:attributeName="visibility"
+                    motion:customIntegerValue="0" />
+            </KeyAttribute>
+            <KeyAttribute
+                motion:framePosition="0"
+                motion:motionTarget="@id/assetsRecyclerView">
+                <CustomAttribute
+                    motion:attributeName="visibility"
+                    motion:customIntegerValue="8" />
+            </KeyAttribute>
+        </KeyFrameSet>
     </Transition>
 
     <ConstraintSet android:id="@+id/collapsedSet">
@@ -62,46 +61,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:alpha="1"
-            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/searchButton"/>
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/searchButton" />
         <Constraint
             android:id="@+id/bottomBackground"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            motion:layout_constraintTop_toTopOf="@id/dividerGuideline"
             motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"/>
+            motion:layout_constraintTop_toTopOf="@id/dividerGuideline" />
 
         <Constraint
             android:id="@+id/backgroundView"
-            android:layout_height="0dp"
             android:layout_width="0dp"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_height="0dp"
+            android:alpha="0"
             motion:layout_constraintBottom_toBottomOf="parent"
-            android:alpha="0"/>
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
 
         <Constraint
             android:id="@+id/searchButton"
             android:layout_width="@dimen/dimen_100"
             android:layout_height="@dimen/dimen_100"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintBottom_toTopOf="@id/bottomBackground"
-            motion:layout_constraintTop_toTopOf="@id/bottomBackground"/>
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/bottomBackground" />
 
         <Constraint
             android:id="@+id/searchTextInputContainer"
             android:layout_width="@dimen/dimen_100"
             android:layout_height="@dimen/dimen_100"
             android:alpha="0"
-            motion:layout_constraintStart_toStartOf="@id/searchButton"
             motion:layout_constraintBottom_toBottomOf="@id/searchButton"
             motion:layout_constraintEnd_toEndOf="@id/searchButton"
-            motion:layout_constraintTop_toTopOf="@id/searchButton"/>
+            motion:layout_constraintStart_toStartOf="@id/searchButton"
+            motion:layout_constraintTop_toTopOf="@id/searchButton" />
 
         <Constraint
             android:id="@+id/assetsRecyclerView"
@@ -121,37 +120,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:alpha="0"
-            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/searchButton"/>
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/searchButton" />
         <Constraint
             android:id="@+id/bottomBackground"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            motion:layout_constraintTop_toBottomOf="@id/toolbarLayout"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintVertical_bias="0.0"
-            motion:layout_constraintHorizontal_bias="0.0" />
+            motion:layout_constraintHorizontal_bias="0.0"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/toolbarLayout"
+            motion:layout_constraintVertical_bias="0.0" />
         <Constraint
             android:id="@+id/backgroundView"
-            android:layout_height="0dp"
             android:layout_width="0dp"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_height="0dp"
+            android:alpha="1"
             motion:layout_constraintBottom_toBottomOf="parent"
-            android:alpha="1"/>
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
         <Constraint
             android:id="@+id/searchButton"
             android:layout_width="@dimen/dimen_56"
             android:layout_height="@dimen/dimen_56"
-            android:layout_marginEnd="@dimen/dimen_24"
             android:layout_marginTop="@dimen/dimen_24"
-            motion:pivotAnchor="parent"
+            android:layout_marginEnd="@dimen/dimen_24"
             motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/toolbarLayout"/>
+            motion:layout_constraintTop_toBottomOf="@id/toolbarLayout"
+            motion:pivotAnchor="parent" />
 
         <Constraint
             android:id="@+id/searchTextInputContainer"
@@ -159,10 +158,10 @@
             android:layout_height="@dimen/dimen_56"
             android:layout_marginStart="@dimen/dimen_24"
             android:alpha="1"
-            motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintBottom_toBottomOf="@id/searchButton"
             motion:layout_constraintEnd_toEndOf="@id/searchButton"
-            motion:layout_constraintTop_toTopOf="@id/searchButton"/>
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/searchButton" />
         <Constraint
             android:id="@+id/assetsRecyclerView"
             android:layout_width="0dp"

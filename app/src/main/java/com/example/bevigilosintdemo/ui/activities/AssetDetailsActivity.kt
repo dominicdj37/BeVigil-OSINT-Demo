@@ -18,10 +18,12 @@ import com.example.bevigilosintdemo.utils.ResourceUtils.getStringResource
 import com.example.bevigilosintdemo.viewmodels.AssetDetailsViewModel
 
 class AssetDetailsActivity : BaseActivity() {
+
     lateinit var binding: ActivityAssetDetailsBinding
     private val viewModel: AssetDetailsViewModel  by viewModels()
     var assetAdapter: AssetsAdapter? = null
 
+    //region lifecycle methods
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAssetDetailsBinding.inflate(layoutInflater)
@@ -31,6 +33,15 @@ class AssetDetailsActivity : BaseActivity() {
         initializeToolbar()
         initializeAssetList()
         getAllAssetsFor(viewModel.packageID)
+    }
+    //endregion
+
+
+    //region init UI
+    private fun initializeToolbar() {
+        binding.toolbarLayout.setup(getStringResource(R.string.all_assets), getDrawableResource(R.drawable.ic_left), leftClick = {
+            onBackPressed()
+        })
     }
 
     private fun initializeAssetList() {
@@ -51,7 +62,9 @@ class AssetDetailsActivity : BaseActivity() {
             detailsBottomSheet.show(supportFragmentManager, detailsBottomSheet.tag)
         }
     }
+    //endregion
 
+    //region data population
     private fun getAllAssetsFor(inputString: String) {
         showLoading(binding.progressBarLayout)
         viewModel.getAllAssets(inputString).observe(this, object : Observer<ApiResponse> {
@@ -70,12 +83,5 @@ class AssetDetailsActivity : BaseActivity() {
             }
         })
     }
-
-    private fun initializeToolbar() {
-        binding.toolbarLayout.setup(getStringResource(R.string.all_assets), getDrawableResource(R.drawable.ic_left), leftClick = {
-            onBackPressed()
-        })
-    }
-
-
+    //endregion
 }

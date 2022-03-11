@@ -8,6 +8,7 @@ import com.example.bevigilosintdemo.api.model.AssetModel
 import com.example.bevigilosintdemo.api.repository.OSINTRepository
 
 class AssetDetailsViewModel: ViewModel() {
+
     var asset: AssetModel = AssetModel()
     var packageID = ""
 
@@ -21,8 +22,4 @@ class AssetDetailsViewModel: ViewModel() {
         asset.appIcon = appPackage?.applicationInfo?.loadIcon(packageManager)
         asset.appName = appPackage?.applicationInfo?.loadLabel(packageManager).toString()
     }
-
-
-
-
 }

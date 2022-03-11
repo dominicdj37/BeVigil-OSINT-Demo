@@ -17,8 +17,6 @@ class App {
     @Expose
     var version: String? = null
 
-
     var icon: Drawable? = null
-
 
 }

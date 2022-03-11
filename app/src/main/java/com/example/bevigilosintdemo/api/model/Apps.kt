@@ -8,11 +8,9 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 class Apps {
-
     @SerializedName("domain") @Expose
     var domain: String? = null
 
     @SerializedName("packages") @Expose
     var packages: ArrayList<App> = arrayListOf()
-
 }

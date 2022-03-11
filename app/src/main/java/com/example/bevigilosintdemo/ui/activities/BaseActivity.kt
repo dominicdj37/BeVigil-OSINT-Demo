@@ -15,10 +15,15 @@ import com.example.bevigilosintdemo.utils.ResourceUtils.getStringResource
 import kotlinx.coroutines.*
 
 open class BaseActivity : AppCompatActivity() {
+
+    //region lifecycle methods
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+    //endregion
 
+
+    //region navigation
     fun navigateToHomeActivity() {
         startActivity(Intent(this, HomeActivity::class.java))
     }
@@ -35,6 +40,13 @@ open class BaseActivity : AppCompatActivity() {
         })
     }
 
+    fun navigateToSplashScreen() {
+        startActivity(Intent(this, SplashActivity::class.java))
+    }
+    //endregion
+
+
+    //region loading progress
     fun showLoading(binding: LayoutLoadingProgressBinding) {
         binding.root.visibility = View.VISIBLE
     }
@@ -47,7 +59,10 @@ open class BaseActivity : AppCompatActivity() {
             }
         }
     }
+    //endregion
 
+
+    //region error handling
     fun handleError(error: Error?) {
         showDismissiveAlertDialog(
             title = getStringResource(R.string.oops),
@@ -55,7 +70,7 @@ open class BaseActivity : AppCompatActivity() {
         )
     }
 
-    fun showDismissiveAlertDialog(
+    private fun showDismissiveAlertDialog(
         title: String,
         message: String,
         buttonText: String = getStringResource(R.string.ok),
@@ -77,4 +92,5 @@ open class BaseActivity : AppCompatActivity() {
         }
         mAlertDialog.show()
     }
+    //endregion
 }

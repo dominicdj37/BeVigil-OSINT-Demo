@@ -23,7 +23,6 @@ class AssetModel {
     var appIcon: Drawable? = null
 
     fun getKeyAt(index: Int) = assets.keys.elementAt(index)
-    fun getAssetAt(index: Int) = assets.values.elementAt(index)
     fun isEmpty() = assets.isEmpty()
     fun getAssetsCount() = assets.count()
     fun getAssetCountAt(key: String) = assets[key]?.count() ?: 0

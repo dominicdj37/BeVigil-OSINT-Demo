@@ -156,7 +156,7 @@
             tools:text="91" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/nonSystemAppslabel"
+            android:id="@+id/nonSystemAppsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/installed_apps"
@@ -192,7 +192,7 @@
             tools:text="120" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/systemAppslabel"
+            android:id="@+id/systemAppsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/system_apps"

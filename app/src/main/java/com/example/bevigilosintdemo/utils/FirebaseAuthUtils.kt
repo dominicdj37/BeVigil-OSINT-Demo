@@ -5,7 +5,7 @@ import com.firebase.ui.auth.AuthUI
 
 object FirebaseAuthUtils {
 
-    val providers = arrayListOf(
+    private val providers = arrayListOf(
         AuthUI.IdpConfig.GoogleBuilder().build()
     )
 
