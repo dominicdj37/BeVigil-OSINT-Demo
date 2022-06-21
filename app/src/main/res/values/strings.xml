@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">BeVigil OSINT Demo</string>
+    <string name="home_page_title">BeVigil</string>
+    <string name="search_prompt">Search using App package name</string>
+    <string name="recent_searches_label">Recent Searches</string>
+
+    <string name="asset_title_email">{count} Email</string>
+    <string name="asset_title_filename">{count} File Name</string>
+    <string name="asset_title_file_path">{count} File Path</string>
+    <string name="asset_title_host">{count} Host</string>
+    <string name="asset_title_rest_api">{count} REST API</string>
+    <string name="asset_title_url">{count} URL</string>
+    <string name="asset_title_relative_endpoint">{count} Relative Endpoint</string>
+    <string name="asset_title_ip_address_disclosure">{count} IP Address Disclosures</string>
+    <string name="asset_title_ip_url">{count} IP URL</string>
+    <string name="asset_title_amazon_elb_url">{count} Amazon ELB URL</string>
+    <string name="asset_title_aws_url">{count} AWS URL</string>
+    <string name="asset_title_cloudFront_url">{count} CloudFront URL</string>
+    <string name="asset_title_firebase_url">{count} Firebase URL</string>
+
+    <string name="view_all_label">View all {asset}</string>
+    <string name="all_assets">All Assets</string>
+    <string name="loading">Loading…</string>
+    <string name="no_recent_items_text">No Recent Searches</string>
+    <string name="recent_items_text">Your Recent Searches</string>
+    <string name="clear_recent_items_text">Clear all recent items</string>
+    <string name="ok">Ok</string>
+    <string name="error_not_found">We couldn\'t find what you are looking for! Please try again later.</string>
+    <string name="error_no_network">We couldn\'t establish a connection with oru servers. Please try again later.</string>
+    <string name="oops">Oops!</string>
+    <string name="unknown_error">We ran into a problem. Please try again.</string>
+    <string name="whoops">Whoops!</string>
+    <string name="nothing_here_text">There\'s nothing here!</string>
+    <string name="search_package_id_hint">Try searching our database for any android package ID. \n eg: com.olacabs.customer</string>
+    <string name="search_hint_title">Hi there!</string>
+    <string name="installed_apps">Installed Apps</string>
+    <string name="system_apps">System Apps</string>
+    <string name="apps_found_on_your_device">Apps found on your device</string>
+    <string name="check_now">Check Apps on this Device</string>
+    <string name="or">Or</string>
+    <string name="search_domain_name">Search Apps using Domain name</string>
+    <string name="my_apps">Apps</string>
+    <string name="click_app_hint">Tap on any app to search our database for assets.</string>
+    <string name="domain_name_search_hint">Try searching any domain name. eg:www.facebook.com</string>
+    <string name="show_system_apps">Show system apps</string>
+    <string name="show_installed_apps">Show installed apps</string>
+    <string name="system_apps_found">System Apps found on your device</string>
+    <string name="installed_apps_found">Installed Apps found on your device</string>
+    <string name="apps">Apps</string>
+    <string name="assets_found_count">{count} Assets found.</string>
+    <string name="apps_associated_with_text">Associated with {name}</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_with_google">Sign in With Google</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="save_apk">Save APK</string>
+
+</resources>

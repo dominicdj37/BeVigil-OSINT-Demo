@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+        <KeyFrameSet>
+
+        </KeyFrameSet>
+        <OnSwipe motion:touchAnchorId="@+id/appListRecyclerView" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@+id/progressBarLayout">
+            <PropertySet motion:visibilityMode="ignore" />
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@+id/progressBarLayout">
+            <PropertySet motion:visibilityMode="ignore" />
+        </Constraint>
+        <Constraint
+            android:id="@+id/headerLayout"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dimen_50"
+            android:elevation="@dimen/dimen_10"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/toolbarLayout" />
+        <Constraint
+            android:id="@+id/appListRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/dimen_48"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/toolbarLayout" />
+        <Constraint
+            android:id="@+id/appCountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:alpha="0"
+            motion:layout_constraintBottom_toBottomOf="@id/headerLayout"
+            motion:layout_constraintStart_toStartOf="@id/headerLayout"
+            motion:layout_constraintTop_toTopOf="@id/headerLayout" />
+        <Constraint
+            android:id="@+id/appTotalCountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_10"
+            android:alpha="0"
+            motion:layout_constraintBottom_toBottomOf="@id/appCountText"
+            motion:layout_constraintStart_toEndOf="@id/appCountText" />
+        <Constraint
+            android:id="@+id/appsFoundLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_18"
+            android:layout_marginEnd="@dimen/dimen_18"
+            android:layout_marginBottom="@dimen/dimen_8"
+            android:alpha="0"
+            motion:layout_constraintBottom_toTopOf="@id/hintTextView"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/hintTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_18"
+            android:layout_marginBottom="@dimen/dimen_10"
+            android:alpha="0"
+            motion:layout_constraintBottom_toBottomOf="@id/headerLayout"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/showAppsLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dimen_10"
+            android:elevation="@dimen/dimen_20"
+            motion:layout_constraintBottom_toBottomOf="@id/collapsedAppCountText"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toEndOf="@id/collapsedAppCountText"
+            motion:layout_constraintTop_toTopOf="@id/collapsedAppCountText" />
+        <Constraint
+            android:id="@+id/collapsedAppCountText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_24"
+            android:alpha="1"
+            android:elevation="@dimen/dimen_20"
+            motion:layout_constraintBottom_toBottomOf="@id/headerLayout"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="@id/headerLayout" />
+    </ConstraintSet>
+
+</MotionScene>

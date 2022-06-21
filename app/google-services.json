@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "127930986223",
+    "project_id": "bevigilosint",
+    "storage_bucket": "bevigilosint.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127930986223:android:293cd4de93962909fb751a",
+        "android_client_info": {
+          "package_name": "com.example.bevigilosintdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127930986223-9iv9vkqtdpi5h8okd6tjp99md0n859h7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bevigilosintdemo",
+            "certificate_hash": "6f01f8968d8d96093adda7567b45729e853d67b2"
+          }
+        },
+        {
+          "client_id": "127930986223-j6pue9p42ptavsjo8vtsjhnf8lfmd33g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bevigilosintdemo",
+            "certificate_hash": "b1183cf6dd5f5a91256aacc311ff54f33381c48a"
+          }
+        },
+        {
+          "client_id": "127930986223-k2j8t414t3182ppegspd780all548tfu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP8r6if7IMeDYyg472Mk3Crr_0meJ147M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127930986223-k2j8t414t3182ppegspd780all548tfu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

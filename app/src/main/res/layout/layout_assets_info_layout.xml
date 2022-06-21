@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_5"
+        android:layout_marginTop="@dimen/dimen_34"
+        android:alpha="1"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:includeFontPadding="false"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/text_size_24"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/verticalGuide"
+        app:layout_constraintStart_toEndOf="@id/appIconImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appIconImage"
+        android:layout_width="@dimen/dimen_50"
+        android:layout_height="@dimen/dimen_50"
+        android:layout_marginStart="@dimen/dimen_34"
+        android:layout_marginTop="@dimen/dimen_34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/sym_def_app_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appPackageName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_5"
+        android:alpha="1"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:includeFontPadding="false"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/text_size_14"
+        app:layout_constraintEnd_toStartOf="@+id/verticalGuide"
+        app:layout_constraintStart_toEndOf="@id/appIconImage"
+        app:layout_constraintTop_toBottomOf="@id/appName"
+        app:layout_goneMarginTop="@dimen/dimen_28" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/assetsCountText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_34"
+        android:layout_marginTop="@dimen/dimen_5"
+        android:alpha="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/text_size_20"
+        app:layout_constraintEnd_toStartOf="@+id/verticalGuide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appIconImage" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".6" />
+
+    <com.example.bevigilosintdemo.ui.custom.PieChart
+        android:id="@+id/pieChart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/verticalGuide"
+        app:layout_constraintTop_toTopOf="@+id/appName" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/assetsCountFlexBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:flexDirection="row"
+        app:flexWrap="wrap"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/verticalGuide"
+        app:layout_constraintStart_toStartOf="@+id/assetsCountText"
+        app:layout_constraintTop_toBottomOf="@id/assetsCountText">
+    </com.google.android.flexbox.FlexboxLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
