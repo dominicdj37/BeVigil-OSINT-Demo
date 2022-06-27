@@ -52,5 +52,6 @@
     <string name="sign_in">Sign In</string>
     <string name="sign_in_with_google">Sign in With Google</string>
     <string name="sign_out">Sign Out</string>
+    <string name="save_apk">Save APK</string>
 
 </resources>

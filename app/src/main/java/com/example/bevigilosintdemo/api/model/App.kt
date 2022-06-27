@@ -3,6 +3,7 @@ package com.example.bevigilosintdemo.api.model
 import android.graphics.drawable.Drawable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.io.File
 
 class App {
     @SerializedName("package_id")
@@ -18,5 +19,9 @@ class App {
     var version: String? = null
 
     var icon: Drawable? = null
+    var appFile: File? = null
+    var appSource: String? = null
+    var appSize: String? = null
+    var installedDate: String? = null
 
 }

@@ -9,6 +9,7 @@ class AppContext: Application() {
         super.onCreate()
         ResourceUtils.initialize(this)
     }
+
 }
 
 

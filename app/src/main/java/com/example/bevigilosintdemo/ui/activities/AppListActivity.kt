@@ -1,9 +1,11 @@
 package com.example.bevigilosintdemo.ui.activities
 
+import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
@@ -19,6 +21,7 @@ import com.example.bevigilosintdemo.hideKeyBoardAndRemoveFocus
 import com.example.bevigilosintdemo.showKeyBoardAndFocus
 import com.example.bevigilosintdemo.ui.adapters.AppClickListener
 import com.example.bevigilosintdemo.ui.adapters.AppListAdapter
+import com.example.bevigilosintdemo.services.MyNotificationListenerService
 import com.example.bevigilosintdemo.utils.ResourceUtils.getDrawableResource
 import com.example.bevigilosintdemo.utils.ResourceUtils.getStringResource
 import com.example.bevigilosintdemo.viewmodels.DeviceAppListViewModel
@@ -39,6 +42,8 @@ class AppListActivity : BaseActivity() {
         viewModel.isDomainSearchMode = intent.getBooleanExtra(Constants.SEARCH_DOMAIN, false)
 
         initializeUI()
+        startActivity(Intent(ACTION_NOTIFICATION_LISTENER_SETTINGS))
+        MyNotificationListenerService.startService(this, "")
     }
     //endregion
 
@@ -114,7 +119,7 @@ class AppListActivity : BaseActivity() {
                 binding.collapsedAppCountText.text =
                     "${systemPackages.size} ${getStringResource(R.string.apps)}"
                 viewModel.displayingAppList.clear()
-                viewModel.getAppListFromPackages(systemPackages, packageManager) { returnList ->
+                viewModel.getAppListFromPackages(systemPackages, packageManager, this) { returnList ->
                     viewModel.displayingAppList.addAll(returnList)
                     adapter?.notifyDataSetChanged()
                     hideLoading(binding.progressBarLayout)
@@ -135,7 +140,7 @@ class AppListActivity : BaseActivity() {
                             "${installedPackages.size} ${getStringResource(R.string.apps)}"
                         binding.appCountText.text = installedPackages.size.toString()
                         viewModel.displayingAppList.clear()
-                        viewModel.getAppListFromPackages(installedPackages, packageManager) { returnList ->
+                        viewModel.getAppListFromPackages(installedPackages, packageManager, this@AppListActivity) { returnList ->
                             viewModel.displayingAppList.addAll(returnList)
                             adapter?.notifyDataSetChanged()
                             hideLoading(binding.progressBarLayout)

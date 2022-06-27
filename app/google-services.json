@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "127930986223-9iv9vkqtdpi5h8okd6tjp99md0n859h7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bevigilosintdemo",
+            "certificate_hash": "6f01f8968d8d96093adda7567b45729e853d67b2"
+          }
+        },
+        {
           "client_id": "127930986223-j6pue9p42ptavsjo8vtsjhnf8lfmd33g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
